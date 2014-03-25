@@ -4,6 +4,7 @@ ruby '2.0.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
+gem 'bootstrap-sass', '2.3.2.0'
 
 group :development, :test do # 2
   gem 'sqlite3', '1.3.8'
@@ -19,7 +20,7 @@ end
 #gem 'sqlite3'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.1'
+gem 'sass-rails', '~> 4.0.0'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 2.1.1'
