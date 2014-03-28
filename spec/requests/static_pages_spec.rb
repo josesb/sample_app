@@ -11,46 +11,42 @@
 #end
 
 
+
 # spec/requests/static_pages_spec.rb
 
 require 'spec_helper'
 
-describe "Static pages" do
+describe "Static pages" do   #describe las paginas estaticas
+  let (:base_title ) { "Ruby on Rails Tutorial Sample App" }
+  subject {page}
 
+  describe "Home page" do     #describe las paginas home
+    before { visit root_path }  #pag 50 DAN 13
+    it { should have_content('Sample App') }
+    it { should have_title(full_title('')) }   # Se agrega en pag 54 DAN_13 junto con utilities.rb
+    # it { should have_title("Ruby on Rails Tutorial Sample App") }
+    it { should_not have_title('| Home') }
+  end
 
-
-   # it "should have the content 'Sample App'" do
-   #   visit '/static_pages/home'
-   #   expect(page).to have_content('Sample App')
-   # end
-
-   # it "should have the right title" do
-   #   visit '/static_pages/home'
-   #   expect(page).to have_title("Ruby on Rails Tutorial Sample App | Home")
-   # end
-  subject { page }
-
-    let (:base_title ) { "Ruby on Rails Tutorial Sample App" }
-    describe "Home page" do
-      before { visit root_path }
-      it { should have_content('Sample App') }
-      it { should have_title(full_title('')) }
-      it { should_not have_title('| Home') }
-    end
 
   describe "Help page" do
-    before { visit help_path }
-    it { should have_content('Help') }
-    it { should have_title(full_title('Help'))}
+    before { visit help_path }  #pag 50 DAN 13
+    it { should have_content('Help')}
+    it { should have_title(full_title('')) }
+    #it { should have_title("Ruby on Rails Tutorial Sample App") }
+    # it { should_not have_title('| Help') }
+
   end
+
 
   describe "About page" do
-    before { visit about_path }
-    it { should have_content('About Us') }
-    it { should have_title(full_title('About Us'))}
+    before { visit about_path }  #pag 50 DAN 13
+    it { should have_content('About')}
+    it { should have_title(full_title('')) }
+    #it { should have_title("Ruby on Rails Tutorial Sample App") }
+    #it { should_not have_title('| About') }
   end
 
-
-
-
 end
+
+
