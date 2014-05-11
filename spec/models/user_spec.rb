@@ -8,12 +8,11 @@ describe User do
   subject { @user }
   it { should respond_to(:name) }
   it { should respond_to(:email) }
-  it { should respond_to(:password_digest) }
-  it { should respond_to(:password) }
-  it { should respond_to(:password_confirmation) }
-  it { should respond_to(:remember_token) } # add DAN 16
+  it { should respond_to(:password_digest) }        # add DAN 14
+  it { should respond_to(:password) }               # add DAN 14
+  it { should respond_to(:password_confirmation) }  # add DAN 14
+  it { should respond_to(:remember_token) }         # add DAN 16
   it { should respond_to(:authenticate) }
-
 
   it { should be_valid }
 
@@ -62,6 +61,7 @@ describe User do
     it { should_not be_valid } # 1 the subject "it" is @user
   end
 
+
   describe "when password is not present" do
     before do
       @user = User.new(name: "Example User", email: "user@example.com", password: " ", password_confirmation: " ")
@@ -69,10 +69,12 @@ describe User do
     it { should_not be_valid }
   end
 
+
   describe "when password doesn't match confirmation" do
     before { @user.password_confirmation = "mismatch" }
     it { should_not be_valid }
   end
+
 
   describe "return value of authenticate method" do
     before { @user.save }
@@ -86,6 +88,7 @@ describe User do
       specify { expect(user_for_invalid_password).to be_false }
     end
   end
+
 
   describe "with a password that's too short" do
     before { @user.password = @user.password_confirmation = "a" * 5 }
