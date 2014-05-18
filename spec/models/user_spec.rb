@@ -12,9 +12,21 @@ describe User do
   it { should respond_to(:password) }               # add DAN 14
   it { should respond_to(:password_confirmation) }  # add DAN 14
   it { should respond_to(:remember_token) }         # add DAN 16
-  it { should respond_to(:authenticate) }
+  it { should respond_to(:admin) }                  # add DAN 17
 
   it { should be_valid }
+  it { should_not be_admin }
+
+
+  describe "with admin attribute set to 'true'" do
+    before do
+      @user.save!
+      @user.toggle!(:admin)
+    end
+
+    it { should be_admin }
+  end
+
 
   describe "when name is not present" do
     before { @user.name = " " }
